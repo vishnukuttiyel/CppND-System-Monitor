@@ -1,7 +1,7 @@
 #include "processor.h"
 # include "linux_parser.h"
 
-// TODO: Return the aggregate CPU utilization
+//  Return the aggregate CPU utilization
 float Processor::Utilization() { 
 
     float cpuPercentage;
@@ -11,18 +11,18 @@ float Processor::Utilization() {
     float currentActiveJiffies = (float)LinuxParser::ActiveJiffies();
 
 
-    float deltaTotalJiffies = currentTotalJiffies-prevTotalJiffies;
-    float deltaActiveJiffies = (currentActiveJiffies - prevActiveJiffies);
+    float deltaTotalJiffies = currentTotalJiffies-prevTotalJiffies_;
+    float deltaActiveJiffies = (currentActiveJiffies - prevActiveJiffies_);
 
     if ((deltaTotalJiffies >0) && (deltaActiveJiffies >0)) {
         cpuPercentage = deltaActiveJiffies / deltaTotalJiffies;
     }
     else {
-        cpuPercentage = prevCpuPercentage;
+        cpuPercentage = prevCpuPercentage_;
     }
     
 
-    prevTotalJiffies = currentTotalJiffies;
-    prevActiveJiffies = currentActiveJiffies; 
-    prevCpuPercentage = cpuPercentage;
+    prevTotalJiffies_ = currentTotalJiffies;
+    prevActiveJiffies_ = currentActiveJiffies; 
+    prevCpuPercentage_ = cpuPercentage;
     return cpuPercentage;}

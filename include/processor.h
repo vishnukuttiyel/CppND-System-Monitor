@@ -7,9 +7,9 @@ class Processor {
 
   //  Declare any necessary private members
  private:
- float prevTotalJiffies{0};
- float prevActiveJiffies{0};
- float prevCpuPercentage{0};
+ float prevTotalJiffies_{0};
+ float prevActiveJiffies_{0};
+ float prevCpuPercentage_{0};
 };
 
 #endif
